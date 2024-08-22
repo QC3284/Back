@@ -58,13 +58,21 @@ jobs:
         sleep 5
         mkdir giit
         cd giit
-        curl https://raw.githubusercontent.com/QC3284/openwrt-actions-config/main/lede.sh | bash
+        curl https://raw.githubusercontent.com/QC3284/openwrt-actions-config/main/lede.sh -o 1.sh && chmod 777 1.sh
+        ./1.sh
+        sudo rm -rf 1.sh
         sleep 3
-        curl https://raw.githubusercontent.com/QC3284/openwrt-actions-config/main/istoreos.sh | bash
+        curl https://raw.githubusercontent.com/QC3284/openwrt-actions-config/main/istoreos.sh -o 2.sh && chmod 777 2.sh
+        ./2.sh
+        sudo rm -rf 2.sh
         sleep 3
-        curl https://raw.githubusercontent.com/QC3284/openwrt-actions-config/main/openwrt.sh | bash
+        curl https://raw.githubusercontent.com/QC3284/openwrt-actions-config/main/openwrt.sh -o 3.sh && chmod 777 3.sh
+        ./3.sh
+        sudo rm -rf 3.sh
         sleep 3
-        curl https://raw.githubusercontent.com/QC3284/openwrt-actions-config/main/smartdns.sh | bash
+        curl https://raw.githubusercontent.com/QC3284/openwrt-actions-config/main/smartdns.sh -o 4.sh && chmod 777 4.sh
+        ./4.sh
+        sudo rm -rf 4.sh
         echo "完成"
 
     - name: 检查空间使用情况 (Check space usage)
