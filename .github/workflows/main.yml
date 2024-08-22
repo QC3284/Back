@@ -2,7 +2,7 @@ name: Git
 
 on:
   schedule:
-    - cron: 0 3 * * 2,4,6
+    - cron: 0 3 * * *
   repository_dispatch:
   workflow_dispatch:
     inputs:
@@ -49,21 +49,23 @@ jobs:
         echo Start
         echo $(uname -a) 
         sleep 5
-        sudo apt-get update
-        sudo apt update
-        sudo apt upgrade -y
         sudo apt update
         sudo apt install git zip unzip -y
-        sudo apt-get update
         sudo apt-get install -y libfuse-dev neofetch 7zip
         sudo apt update
         sudo apt full-upgrade -y
         echo Done
-        sleep 10
+        sleep 5
         mkdir giit
         cd giit
-        wget https://github.com/coolsnowwolf/lede/archive/refs/heads/master.zip
-
+        curl https://raw.githubusercontent.com/QC3284/openwrt-actions-config/main/lede.sh | bash
+        sleep 3
+        curl https://raw.githubusercontent.com/QC3284/openwrt-actions-config/main/istoreos.sh | bash
+        sleep 3
+        curl https://raw.githubusercontent.com/QC3284/openwrt-actions-config/main/openwrt.sh | bash
+        sleep 3
+        curl https://raw.githubusercontent.com/QC3284/openwrt-actions-config/main/smartdns.sh | bash
+        echo "完成"
 
     - name: 检查空间使用情况 (Check space usage)
       if: (!cancelled())
